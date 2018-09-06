@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact information, version three</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+#phonespot {
+    width: 150px;
+    float: left;
+}
+</style>
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+<div class="container">
+  <div class="well" style="text-align:right">Version three</div>
+  <h1>Helpdesk</h1>
+  <h2>Step one: your contact information</h2>
+  <form id="form1" name="form1" method="post">
+    <div class="form-group">
+      <label for="email1">Email address</label>
+      <input id="email1" placeholder="Enter email" class="form-control" type="email">
+    </div>
+    <div class="form-group" id="telephone-number">
+      <div>
+        <label for="telephone-number">Choose your telephone number</label>
+      </div>
+      <div id="phonespot">&nbsp; <span id="phone0"> </span> </div>
+      <button class="btn btn-default" onClick="halt();">Click when you see your phone number</button>
+    </div>
+    <button class="btn btn-primary" style="margin-top: 2.5em;" type="submit" onclick="alert('Thank you for your participation.'); return false;">Submit</button>
+  </form>
+  <div class="well" style="margin-top: 200px; padding-bottom: 2em;">
+    <p>Conclusion: takes too long.</p>
+    <p class="pull-left"><a href="phone-two.html">See previous attempt</a>.</p>
+    <p class="pull-right"><a href="phone-four.html">See next attempt</a>.</p>
+  </div>
+</div>
+</div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script> 
+<script>
+	var haltvalue = "go";
+	var k;
+	
+	function halt() {
+			haltvalue = "stop";
+ 			setInterval(stop);			
+ 			return false;
+			//return k;
+		}
+	
+		function populateSelect(target, min, max){
+    	if (!target){
+			return false;
+		}
+		if (haltvalue == "stop") {
+			return false;
+		}
+		
+		else {
+			var min = min || 1000000000,
+				max = max || min + 8999999999;
+
+			select = document.getElementById(target);
+
+			// not a for loop
+			//for (var i = min; i<=max; i++){
+				var i =  Math.floor(Math.random() * (max - min + 1)) + min;
+				//var opt = document.getElementById('#phone0');
+				//opt.className = "phone";
+				var j = i.toString();
+				k = j.substr(0, 3) + '-' + j.substr(3, 3) + '-' + j.substr(6,4);
+				//opt.value = k;
+
+if (haltvalue == "go") {
+
+				$('#phone0').text(k);
+				}
+
+				// console.log(k);
+				//select.replaceWith(k);
+				//}
+			}
+			/*$('.phone').text(function(i, text) {
+				return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1-$2-$3');
+			});*/
+		}	
+
+for (var i = 1; i<=10; i++){
+			
+
+
+ setInterval(function() {
+
+		populateSelect('phone0');
+ 
+    }, 1000);
+}
+
+
+	</script>
+</body>
+</html>

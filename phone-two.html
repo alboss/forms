@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact information, version two</title>
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <style type="text/css">
+#clickme {
+    border: 1px solid silver;
+    border-radius: 5px;
+    width: 100%;
+    height: 2.5em;
+}
+#dropdown {
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 10px;
+    width: 98%;
+    height: 8.5em;
+}
+#slider-vertical {
+    height: 7.75em;
+    float: right;
+    margin-right: -1em;
+}
+#amount {
+    background-color: navy;
+    color: white;
+    padding-top: .2em;
+    padding-bottom: .2em;
+    margin-left: -.5em;
+    padding-left: .5em;
+}
+</style>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var amount = $( "#amount" );
+    $( "#slider-vertical" ).slider({
+       orientation: "vertical",
+       range: "min",
+       min: 1000000000,
+       max: 9999999999, 
+       value: 9999999999,
+       step: 1,
+      create: function() {
+      
+        amount.text( $( this ).slider( "value" ) );
+        var j = $( this ).slider( "value" );
+        var jj = j.toString();
+        var a = (j-1).toString();
+        var b = (j-2).toString();
+        var c = (j-3).toString();
+        var d = (j-4).toString();
+		var k = jj.substr(0, 3) + '-' + jj.substr(3, 3) + '-' + jj.substr(6,4);
+		var aa = a.substr(0, 3) + '-' + a.substr(3, 3) + '-' + a.substr(6,4);
+		var bb = b.substr(0, 3) + '-' + b.substr(3, 3) + '-' + b.substr(6,4);
+		var cc = c.substr(0, 3) + '-' + c.substr(3, 3) + '-' + c.substr(6,4);
+		var dd = d.substr(0, 3) + '-' + d.substr(3, 3) + '-' + d.substr(6,4);
+		$("#amount2").text(k);
+        $("#amount3").text(aa);
+        $("#amount").text(bb);
+        $("#amount4").text(cc);
+        $("#amount5").text(dd);
+      },
+      slide: function( event, ui ) {
+      var j = ui.value;
+      	var jj = j.toString();
+      	 var a = (j+2).toString();
+      	 var b = (j+1).toString();
+        var c = (j-1).toString();
+        var d = (j-2).toString();
+		var k = jj.substr(0, 3) + '-' + jj.substr(3, 3) + '-' + jj.substr(6,4);
+       amount.text( k );
+       var aa = a.substr(0, 3) + '-' + a.substr(3, 3) + '-' + a.substr(6,4);
+       if (j+2 < 9999999999) {
+               $("#amount2").text(aa);
+         }
+		else { $("#amount2").text("").css("height","1em");}
+       var bb = b.substr(0, 3) + '-' + b.substr(3, 3) + '-' + b.substr(6,4);
+        if (j+1 < 9999999999) {
+               $("#amount3").text(bb);
+                }
+		else { $("#amount3").text("").css("height","1em");}
+		
+       var cc = c.substr(0, 3) + '-' + c.substr(3, 3) + '-' + c.substr(6,4);
+        if (j-1 > 1000000000) {
+               $("#amount4").text(cc);
+                }
+		else { $("#amount4").text("").css("height","1em");}
+		 if (j-2 > 1000000000) {
+       var dd = d.substr(0, 3) + '-' + d.substr(3, 3) + '-' + d.substr(6,4);
+               $("#amount5").text(dd);
+                }
+		else { $("#amount5").text("").css("height","1em");}
+}
+    });
+  } );
+  </script>
+  </head>
+  <body>
+<div class="container"> 
+    <!--<div id="loader" style="display: block; text-align:center"><i class="fa fa-spinner fa-spin" style="font-size:24px"></i> Loading; please wait. It's gonna be great!</div>
+  <div id="helpform" style="display:none">-->
+    <div class="well" style="text-align:right">Version two</div>
+    <h1>Helpdesk</h1>
+    <h2>Step one: your contact information</h2>
+    <form id="form1" name="form1" method="post">
+    <div class="form-group">
+        <label for="email1">Email address</label>
+        <input id="email1" placeholder="Enter email" class="form-control" type="email">
+      </div>
+    <div class="form-group" id="telephone-number">
+        <div>
+        <label for="telephone-number">Choose your telephone number</label>
+      </div>
+        <div id="clickme" onclick="$('#clickme').toggle();$('#dropdown').toggle();"> <i class="fas fa-2x fa-caret-square-down pull-right"></i></div>
+        <div id="dropdown" style="display:none">
+        <div id="slider-vertical"> 
+            <!--<div id="custom-handle" class="ui-slider-handle"></div>--> 
+          </div>
+        <div id="amount2"></div>
+        <div id="amount3"></div>
+        <div id="amount"></div>
+        <div id="amount4"></div>
+        <div id="amount5"></div>
+      </div>
+      </div>
+    <button class="btn btn-primary" style="margin-top: 2em;" type="submit" onclick="alert('Thank you for your participation.'); return false;">Submit</button>
+  </form>
+    <div class="well" style="margin-top: 200px; padding-bottom: 2em">
+    <p>Conclusion: too much scrolling.</p>
+    <p class="pull-left"><a href="index.html">See previous attempt</a>.</p>
+    <p class="pull-right"><a href="phone-three.html">See next attempt</a>.</p>
+  </div>
+  </div>
+</div>
+</div>
+<!-- </div> --> 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) <script src="js/jquery-1.11.3.min.js"></script> --> 
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+
+<script src="js/bootstrap.js"></script> 
+
+<!--<script>
+				var areamin = areamin || 100,
+				areamax = areamax || areamin + 899;
+				var phonemin = phonemin || 1000000000,
+				phonemax = phonemax || phonemin + 8999999999; 
+
+	
+		function populateSelect(target, min, max){
+		
+    	if (!target){
+			return false;
+		}
+		else {
+
+			select = document.getElementById(target);
+
+			for (var i = min; i<=max; i++){
+				var opt = document.createElement('option');
+				opt.className = "phone";
+				var j = i.toString();
+				var k = j.substr(0, 3) + '-' + j.substr(3, 3); // + '-' + j.substr(6,4);
+				opt.value = k;
+				opt.innerHTML = k;
+				select.appendChild(opt);
+				}
+			}
+			/*$('.phone').text(function(i, text) {
+				return text.replace(/(\d\d\d)(\d\d\d)(\d\d\d\d)/, '$1-$2-$3');
+			});*/
+		}	
+		//$( "#loader" ).toggle();
+		//$( "#helpform" ).toggle();
+		populateSelect('phone0', areamin, areamax);
+		populateSelect('phone1', phonemin, phonemax);		
+
+	</script>-->
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact information, version one</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+</head>
+<body>
+<div class="container">
+  <div class="well" style="text-align:right">Version one</div>
+  <h1>Helpdesk</h1>
+  <h2>Step one: your contact information</h2>
+  <form id="form1" name="form1" method="post">
+    <div class="form-group">
+      <label for="email1">Email address</label>
+      <input id="email1" placeholder="Enter email" class="form-control" type="email">
+    </div>
+    <div class="form-group" id="telephone-number">
+      <div>
+        <label for="telephone-number">Telephone number</label>
+      </div>
+      (&nbsp;&nbsp;
+      <select class="custom-select" id="phone0">
+      </select>
+      <select class="custom-select" id="phone1">
+      </select>
+      <select class="custom-select" id="phone2">
+      </select>
+      &nbsp;&nbsp;)&nbsp;&nbsp;
+      <select class="custom-select" id="phone3">
+      </select>
+      <select class="custom-select" id="phone4">
+      </select>
+      <select class="custom-select" id="phone5">
+      </select>
+      &nbsp;&nbsp;-&nbsp;&nbsp;
+      <select class="custom-select" id="phone6">
+      </select>
+      <select class="custom-select" id="phone7">
+      </select>
+      <select class="custom-select" id="phone8">
+      </select>
+      <select class="custom-select" id="phone9">
+      </select>
+    </div>
+    <button class="btn btn-primary" style="margin-top: 2em;" type="submit" onclick="alert('Thank you for your participation.'); return false;">Submit</button>
+  </form>
+  <div class="well" style="margin-top: 200px; padding-bottom: 2em;">
+    <p>Conclusion: too many dropdowns.</p>
+    <p class="pull-right"><a href="phone-two.html">See next attempt</a>.</p>
+  </div>
+</div>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+<script src="js/jquery-1.11.3.min.js"></script> 
+
+<!-- Include all compiled plugins (below), or include individual files as needed --> 
+<script src="js/bootstrap.js"></script> 
+<script>
+		function populateSelect(target, min, max){
+    	if (!target){
+			return false;
+		}
+		else {
+			var min = min || 0,
+				max = max || min + 9;
+
+			select = document.getElementById(target);
+
+			for (var i = min; i<=max; i++){
+				var opt = document.createElement('option');
+				opt.value = i;
+				opt.innerHTML = i;
+				select.appendChild(opt);
+				}
+			}
+		}	
+		populateSelect('phone0');
+		populateSelect('phone1');
+		populateSelect('phone2');
+		populateSelect('phone3');
+		populateSelect('phone4');
+		populateSelect('phone5');
+		populateSelect('phone6');
+		populateSelect('phone7');
+		populateSelect('phone8');
+		populateSelect('phone9');
+	</script>
+</body>
+</html>
